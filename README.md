@@ -1,4 +1,3 @@
-# pandas-start
 ## Modify a .xlsx format with Pandas library
 Learning to use some library functions to wrap an Excel spreadsheet. There are no complex functions or estructure the objective is just organize an amout of data about some companys
 
