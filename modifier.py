@@ -18,7 +18,7 @@ def getFColumns(l):
     aux.insert(0,"Company")
     return aux 
 
-def getFCompanys(p,y,c):
+def getFCompanies(p,y,c):
     return [x for item in c for x in repeat(item, p*len(y))]
 
 def getFIDs(p,y,c):
@@ -65,12 +65,12 @@ def getFinal(n,d,c,p,y,v,w,t):
 #Get the .xlsx file from ECONOMATICA
 df = pd.read_excel("./source/data.xlsx", "Sheet1")
 
-#Extracting the companys
-companys = []
-companys.extend(df.columns)
-companys.pop(0)
-companys.pop(0)
-companys.pop(0)
+#Extracting the companies
+companies = []
+companies.extend(df.columns)
+companies.pop(0)
+companies.pop(0)
+companies.pop(0)
 
 #Extracting the variables
 variables = []
@@ -96,15 +96,15 @@ years.remove(0)
 FColumns = getFColumns(variables)
 new = pd.DataFrame(columns = FColumns)
 
-new[FColumns[0]] = getFCompanys(periods,years,companys)
-new[FColumns[1]] = getFIDs(periods,years,companys)
-new[FColumns[2]] = getFPeriods(periods,years,companys)
-new[FColumns[3]] = getFYears(periods,years,companys)
+new[FColumns[0]] = getFCompanies(periods,years,companies)
+new[FColumns[1]] = getFIDs(periods,years,companies)
+new[FColumns[2]] = getFPeriods(periods,years,companies)
+new[FColumns[3]] = getFYears(periods,years,companies)
 
 init = 0
 whatVar = 0
 for i in range(len(variables)):
-    getFinal(new,df,companys,periods,years,variables,whatVar,init)
+    getFinal(new,df,companies,periods,years,variables,whatVar,init)
     init += periods*len(years)
     whatVar += 1
 
